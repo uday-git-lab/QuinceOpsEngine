@@ -21,5 +21,6 @@ terraform {
     bucket                  = "terraform-state-backend-quince-1"
     key                     = "network/network.tfstate"
     region                  = "ap-south-1"
+    dynamodb_table          = "terraform-lock-table"
   }
 }

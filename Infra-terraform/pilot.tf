@@ -20,6 +20,8 @@ terraform {
     bucket                  = "terraform-state-backend-quince-1"
     key                     = "common/common.tfstate"
     region                  = "ap-south-1"
+    dynamodb_table          = "terraform-lock-table"
+
   }
 }
 
@@ -35,5 +37,6 @@ data "terraform_remote_state" "networking_state" {
     bucket = "terraform-state-backend-quince-1"
     key    = "network/network.tfstate"
     region = "ap-south-1"
+    dynamodb_table          = "terraform-lock-table"
   }
 }
