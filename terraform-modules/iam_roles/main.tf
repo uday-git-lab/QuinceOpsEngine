@@ -1,16 +1,18 @@
-resource "aws_iam_role" "iam_access_role" {
-  name = var.name
+module "blue-green" {
+  source        = "../blue_green"
+  product_name  = var.product_name
+  env           = var.env
+  name          = var.name
+  tags          = var.tags
+}
 
-  assume_role_policy = jsonencode({
-    Version = "2012-10-17",
-    Statement = [
-      {
-        Action = "sts:AssumeRole",
-        Effect = "Allow",
-        Principal = {
-          Service = "ec2.amazonaws.com"
-        }
-      }
-    ]
-  })
+resource "aws_iam_role" "iam_role" {
+  name                  = module.blue-green.id
+  assume_role_policy    = var.assume_role_policy
+  force_detach_policies = true
+  tags                  = var.tags
+  max_session_duration  = var.max_session_duration
+  lifecycle {
+    create_before_destroy = true
+  }
 }
