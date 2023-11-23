@@ -6,8 +6,6 @@
 
 provider "aws" {
   region                   = "ap-south-1"
-  shared_credentials_files = var.shared_credentials_files
-  profile                  = var.profile
 }
 
 ####################################################################################

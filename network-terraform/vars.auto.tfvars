@@ -1,5 +1,3 @@
-shared_credentials_files = ["~/.aws/credentials"]
-profile                  = "default"
 product_name             = "quince"
 env                      = "dev"
 

@@ -1,13 +1,4 @@
 ##################### Common Variables #######################
-variable "shared_credentials_files" {
- 	description = "Aws credentials path"
- 	type        = list(string)
-}
-
-variable "profile" {
-	description = "Aws profile name"
-        type        = string 
-}
 
 variable "product_name" {
         description = "Enter product Name"
