@@ -1,0 +1,19 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: quince-demo-app
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: quince-demo-app
+  template:
+    metadata:
+      labels:
+        app: quince-demo-app
+    spec:
+      containers:
+      - name: quince-demo-app
+        image: <account-id>.dkr.ecr.<your-region>.amazonaws.com/quince-demo-app:latest
+        ports:
+        - containerPort: 8080

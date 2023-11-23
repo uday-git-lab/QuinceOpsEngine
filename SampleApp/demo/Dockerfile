@@ -1,5 +1,5 @@
 # Stage 1: Build the application
-FROM maven:3.6.3-jdk-11 as build
+FROM maven:3.8.4-openjdk-17 as build
 
 # Copy the source code to the container
 WORKDIR /app
@@ -10,7 +10,7 @@ COPY pom.xml .
 RUN mvn clean package -DskipTests
 
 # Stage 2: Run the application
-FROM openjdk:11-jre-slim
+FROM openjdk:17-slim
 
 # Copy the built artifact from the build stage
 COPY --from=build /app/target/*.jar app.jar
